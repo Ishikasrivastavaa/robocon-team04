@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#090d11">
+  <meta name="description" content="ROBOCON Team 04 — High-Speed Vision-Guided Autonomous Inspection Vehicle. A first-year engineering team building, testing and iterating.">
+  <title>ROBOCON / Team 04 — Autonomous Inspection Vehicle</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="intro-sequence" id="introSequence" aria-label="ROBOCON intro animation">
+    <div class="intro-grid"></div>
+    <div class="intro-crosshair"><span></span><span></span></div>
+    <div class="intro-mark">
+      <div class="intro-ring ring-one"></div>
+      <div class="intro-ring ring-two"></div>
+      <div class="intro-monogram">R<span>/</span>B</div>
+    </div>
+    <div class="intro-wordmark">ROBOCON<span> / TEAM 04</span></div>
+    <div class="intro-caption">ENGINEER · BUILD · TEST · ITERATE</div>
+    <div class="intro-progress"><span></span></div>
+    <button id="skipIntro" class="skip-intro" type="button">SKIP INTRO ↗</button>
+  </div>
+
+  <header class="site-header">
+    <a class="brand" href="#home" aria-label="ROBOCON Team 04 home">
+      <span class="brand-symbol">R<span>/</span>B</span>
+      <span class="brand-label"><strong>ROBOCON</strong><small>TEAM 04 / ENGINEERING</small></span>
+    </a>
+
+    <button class="menu-button" id="menuButton" aria-label="Open navigation" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+
+    <nav class="main-nav" id="mainNav">
+      <a href="#mission">MISSION</a>
+      <a href="#vehicle">VEHICLE</a>
+      <a href="#vision-system">VISION</a>
+      <a href="#hardware">HARDWARE</a>
+      <a href="#team">TEAM</a>
+      <a href="#testing">TESTS</a>
+      <a href="#progress">PROGRESS</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero section" id="home">
+      <div class="hero-grid" aria-hidden="true"></div>
+<div class="hero-copy reveal">
+        <div class="eyebrow"><span class="status-pulse"></span> ROBOCON / INTER-DOMAIN TEAM 04 <span class="eyebrow-year">2026</span></div>
+        <p class="hero-overline">FIRST-YEAR ENGINEERS. REAL-WORLD CONSTRAINTS.</p>
+        <h1>WE BUILD<br>TO <em>MOVE</em><br>INTELLIGENTLY.</h1>
+        <p class="hero-description">
+          A high-speed, vision-guided autonomous inspection vehicle with Ackermann steering —
+          designed to follow a marked industrial course, read the path ahead and keep control under load.
+        </p>
+        <div class="hero-ctas">
+          <a class="button button-solid" href="#vehicle">EXPLORE THE BUILD <span>↘</span></a>
+          <a class="button button-outline" href="#team">MEET TEAM 04 <span>↗</span></a>
+        </div>
+        <div class="hero-meta">
+          <div><small>PROJECT</small><strong>PROBLEM 04</strong></div>
+          <div><small>STEERING</small><strong>ACKERMANN</strong></div>
+          <div><small>PAYLOAD</small><strong>UP TO 5 KG</strong></div>
+        </div>
+      </div>
+
+      <div class="hero-visual reveal" id="vehicle">
+        <div class="visual-heading"><span>FIG. 01 / VEHICLE STUDY</span><span class="tag tag-amber">CONCEPT MODEL</span></div>
+        <div class="model-stage" id="modelStage">
+          <div class="stage-grid"></div>
+          <div class="stage-rings ring-a"></div>
+          <div class="stage-rings ring-b"></div>
+          <div class="axis axis-x"></div><div class="axis axis-y"></div>
+          <div class="axis-label axis-x-label">X / VEHICLE WIDTH</div>
+          <div class="axis-label axis-y-label">Y / DIRECTION OF TRAVEL</div>
+
+          <div class="robot-model" id="robotModel" role="img" aria-label="Interactive CSS 3D concept model of an Ackermann autonomous inspection vehicle">
+            <div class="robot-underbody"></div>
+            <div class="robot-chassis">
+              <div class="chassis-rib rib-1"></div><div class="chassis-rib rib-2"></div><div class="chassis-rib rib-3"></div>
+            </div>
+            <div class="robot-topdeck">
+              <div class="deck-cut cut-1"></div><div class="deck-cut cut-2"></div>
+              <div class="payload-platform">
+                <div class="payload-block"><span>PAYLOAD</span><b>≤ 5 KG</b></div>
+              </div>
+              <div class="controller-box"><span>ESP32-S3</span><i></i></div>
+              <div class="power-box"><span>POWER</span><i></i></div>
+              <div class="driver-box"><span>DRIVER</span></div>
+            </div>
+            <div class="camera-mast"><div class="mast-post"></div><div class="camera-head"><span></span></div></div>
+            <div class="steering-linkage"></div>
+            <div class="wheel wheel-front-left"><span></span></div>
+            <div class="wheel wheel-front-right"><span></span></div>
+            <div class="wheel wheel-rear-left"><span></span></div>
+            <div class="wheel wheel-rear-right"><span></span></div>
+            <div class="ir-array"><i></i><i></i><i></i><i></i><i></i></div>
+            <div class="model-glint"></div>
+          </div>
+
+          <div class="model-label label-cam"><span class="label-dot"></span><b>CAMERA</b><small>LOOK-AHEAD INPUT</small></div>
+          <div class="model-label label-payload"><span class="label-dot"></span><b>LOAD PLATFORM</b><small>UP TO 5 KG / TARGET</small></div>
+          <div class="model-label label-drive"><span class="label-dot amber"></span><b>DRIVE + STEERING</b><small>INTEGRATION IN PROGRESS</small></div>
+          <div class="drag-hint"><span>↔</span> DRAG TO ROTATE THE MODEL</div>
+          <button class="model-reset" id="modelReset" type="button" aria-label="Reset 3D model view">RESET VIEW ↺</button>
+        </div>
+        <div class="model-footer"><span>CONCEPTUAL 3D STUDY</span><span>NOT A DIMENSIONED CAD MODEL</span></div>
+</div>
+    </section>
+
+    <section class="signal-strip" aria-label="Project key attributes">
+      <div><span>01</span><strong>VISION-GUIDED</strong><small>LOOK-AHEAD CONCEPT</small></div>
+      <div><span>02</span><strong>ACKERMANN</strong><small>FRONT STEERING</small></div>
+      <div><span>03</span><strong>IR FALLBACK</strong><small>BRING-UP REPORTED WORKING</small></div>
+      <div><span>04</span><strong>FIRST YEAR</strong><small>BUILDING FROM THE LAB UP</small></div>
+    </section>
+
+    <section class="section mission-section" id="mission">
+      <div class="section-heading reveal">
+        <div class="section-index">01 / THE MISSION</div>
+        <h2>Not just fast.<br><em>Predictably in control.</em></h2>
+      </div>
+      <div class="mission-grid">
+        <div class="mission-copy reveal">
+          <p class="big-copy">The challenge is to carry a payload of up to 5 kg through a marked factory-like course, tracking straight sections and changing curves without losing the intended path.</p>
+          <p class="muted-copy">As first-year engineering students, our focus is to turn the problem statement into a real, testable system — one subsystem at a time. We document what works, what still needs debugging, and what must be validated before making performance claims.</p>
+          <a class="text-link" href="https://share.google/aervozBUzyILG09V7" target="_blank" rel="noreferrer">ROBOCON CLUB REFERENCE <span>↗</span></a>
+        </div>
+        <div class="mission-map reveal">
+          <div class="map-topline"><span>TRACK / PATH CONCEPT</span><span class="live-mark"><i></i> SIMULATION</span></div>
+          <div class="course-scene" role="img" aria-label="CSS 3D conceptual track with an autonomous inspection vehicle moving through curves">
+            <div class="course-horizon"></div>
+            <div class="course-platform">
+              <div class="course-loop">
+                <div class="course-inner-line"></div>
+                <div class="course-lane-markers"></div>
+              </div>
+              <div class="course-extension course-extension-a"></div>
+              <div class="course-extension course-extension-b"></div>
+              <div class="course-runner" id="courseRunner">
+                <div class="course-car-body"><span class="course-car-top"></span><span class="course-car-camera"></span>
+                  <i class="course-car-wheel wheel-a"></i><i class="course-car-wheel wheel-b"></i>
+                  <i class="course-car-wheel wheel-c"></i><i class="course-car-wheel wheel-d"></i>
+                </div>
+              </div>
+            </div>
+            <div class="course-marker marker-bend"><i></i><span>BEND / DETECT</span></div>
+            <div class="course-marker marker-sharp"><i></i><span>CURVATURE INCREASE</span></div>
+            <div class="course-marker marker-exit"><i></i><span>EXIT / RECOVER</span></div>
+            <div class="course-key"><span><i class="key-solid"></i> TRACK SURFACE</span><span><i class="key-dashed"></i> PATH CENTER</span><span>CONCEPT MODEL</span></div>
+          </div>
+          <div class="map-bottomline"><span>PATH CENTER</span><span>LOOK-AHEAD REGION</span><span>SHARP TURN</span></div>
+        </div>
+      </div>
+
+      <div class="design-pillars reveal">
+        <article><span>01</span><h3>SEE AHEAD</h3><p>Explore camera-based path detection and look-ahead information.</p></article>
+        <article><span>02</span><h3>CONTROL THE TURN</h3><p>Use steering geometry and feedback to approach curves deliberately.</p></article>
+        <article><span>03</span><h3>TEST BEFORE CLAIMS</h3><p>Validate motor, sensor, encoder and payload performance physically.</p></article>
+      </div>
+    </section>
+
+    <section class="section systems-section" id="systems">
+      <div class="section-heading reveal">
+        <div class="section-index">02 / SYSTEM ARCHITECTURE</div>
+        <h2>From sensor input<br>to <em>physical motion.</em></h2>
+        <p class="heading-note">Select a system block to view the current project note.</p>
+      </div>
+
+      <div class="architecture-panel reveal">
+        <div class="architecture-flow" id="architectureFlow">
+          <button class="arch-node active" data-node="vision"><span>01</span><b>CAMERA / VISION</b><small>Target architecture</small></button>
+          <div class="arch-connector"><i></i></div>
+          <button class="arch-node" data-node="controller"><span>02</span><b>ESP32-S3</b><small>Embedded control</small></button>
+          <div class="arch-connector"><i></i></div>
+          <button class="arch-node" data-node="control"><span>03</span><b>CONTROL LOGIC</b><small>PID / speed strategy</small></button>
+          <div class="arch-connector"><i></i></div>
+          <button class="arch-node" data-node="actuation"><span>04</span><b>ACTUATION</b><small>Servo + drive</small></button>
+        </div>
+        <div class="arch-detail">
+          <div><span class="detail-label">SELECTED SUBSYSTEM</span><h3 id="archTitle">CAMERA / VISION</h3></div>
+          <p id="archDescription">The vision-guided concept uses look-ahead path information. Camera integration remains a development path; the current practical bring-up has prioritized sensor and actuator checks.</p>
+          <span class="detail-status" id="archStatus">DEVELOPMENT CONCEPT</span>
+        </div>
+      </div>
+
+      <div class="backup-callout reveal">
+        <div class="backup-icon">IR</div>
+        <div><span class="detail-label">PRACTICAL BRING-UP</span><h3>IR sensors + steering servo</h3><p>The IR sensors were working and the servo was turning. Full integrated drive, encoder feedback and course testing still need validation.</p></div>
+        <span class="status-tag status-testing">INTEGRATION TESTING</span>
+      </div>
+    </section>
+
+
+    <section class="section vision-system-section" id="vision-system">
+      <div class="section-heading reveal">
+        <div class="section-index">03 / AUTONOMOUS PERCEPTION</div>
+        <h2>The vehicle must<br><em>read the path.</em></h2>
+        <p class="heading-note">This is the intended vision pipeline for the camera-based concept. It is an architecture plan, not a claim that every stage is already integrated on the robot.</p>
+      </div>
+
+      <div class="vision-deep-grid">
+        <div class="vision-chamber reveal">
+          <div class="chamber-topline"><span>PERCEPTION VOLUME / CONCEPT</span><span class="mini-live">● SIMULATION</span></div>
+          <div class="chamber-space">
+            <div class="chamber-floor"></div>
+            <div class="chamber-lane lane-left"></div>
+            <div class="chamber-lane lane-right"></div>
+            <div class="scan-volume"></div>
+            <div class="scan-plane"></div>
+            <div class="camera-orb"><span></span><i></i></div>
+            <div class="detected-path"></div>
+            <div class="centroid-marker"><i></i><span>PATH CENTRE</span></div>
+            <div class="image-centre-marker"><i></i><span>IMAGE CENTRE</span></div>
+            <div class="error-connector"></div>
+            <div class="chamber-callout callout-angle">≈45° DOWNWARD <small>DESIGN CONCEPT</small></div>
+            <div class="chamber-callout callout-lookahead">20–35 CM <small>PRELIMINARY LOOK-AHEAD</small></div>
+          </div>
+          <div class="chamber-caption"><span>CAMERA → ROI → PATH</span><span>NOT A MEASURED OPTICAL MODEL</span></div>
+        </div>
+
+        <div class="vision-pipeline-panel reveal">
+          <div class="pipeline-heading"><span>PROCESSING SEQUENCE</span><span id="pipelineStepCounter">STEP 01 / 08</span></div>
+          <div class="pipeline-list" id="pipelineList">
+            <button class="pipeline-step active" data-pipeline="0"><span>01</span><b>CAMERA FRAME</b><small>Receive a frame from the mobile-camera stream.</small></button>
+            <button class="pipeline-step" data-pipeline="1"><span>02</span><b>PREPROCESSING</b><small>Convert to grayscale / filter unwanted variation.</small></button>
+            <button class="pipeline-step" data-pipeline="2"><span>03</span><b>REGION OF INTEREST</b><small>Focus compute effort on the useful track region.</small></button>
+            <button class="pipeline-step" data-pipeline="3"><span>04</span><b>PATH DETECTION</b><small>Separate the marked path from the background.</small></button>
+            <button class="pipeline-step" data-pipeline="4"><span>05</span><b>CENTROID EXTRACTION</b><small>Estimate the detected path centre.</small></button>
+            <button class="pipeline-step" data-pipeline="5"><span>06</span><b>TRACKING ERROR</b><small>Compare desired centre with detected centre.</small></button>
+            <button class="pipeline-step" data-pipeline="6"><span>07</span><b>PID CORRECTION</b><small>Calculate a control correction from error history.</small></button>
+            <button class="pipeline-step" data-pipeline="7"><span>08</span><b>STEERING + SPEED</b><small>Send control commands through the final actuation design.</small></button>
+          </div>
+          <div class="pipeline-detail">
+            <span class="detail-label">SELECTED STAGE</span>
+            <h3 id="pipelineDetailTitle">CAMERA FRAME</h3>
+            <p id="pipelineDetailText">The system begins with the current mobile-camera input. Stream delay and frame availability must be measured during implementation.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="concept-equation reveal">
+        <div><span class="detail-label">TRACKING ERROR</span><strong>Error = Desired Path Centre − Detected Path Centre</strong></div>
+        <div><span class="detail-label">PID MODEL / CONCEPTUAL</span><strong>Correction = Kp·E + Ki·∫E + Kd·dE/dt</strong></div>
+        <span class="status-tag status-testing">SIMULATION / NOT TUNED HARDWARE VALUES</span>
+      </div>
+    </section>
+
+    <section class="section speed-section" id="speed-control">
+      <div class="section-heading reveal">
+        <div class="section-index">04 / LOOK-AHEAD SPEED MANAGEMENT</div>
+        <h2>Slow before the turn.<br><em>Recover after it.</em></h2>
+        <p class="heading-note">The goal is not maximum speed everywhere. Target speed should respond to upcoming trajectory curvature and the stability available under load.</p>
+      </div>
+
+      <div class="speed-lab reveal">
+        <div class="speed-course">
+          <div class="speed-course-grid"></div>
+          <div class="speed-course-platform">
+            <div class="speed-course-road"></div>
+            <div class="speed-course-line"></div>
+            <div class="speed-region region-straight"><span>STRAIGHT</span></div>
+            <div class="speed-region region-gentle"><span>GENTLE CURVE</span></div>
+            <div class="speed-region region-sharp"><span>SHARP TURN</span></div>
+            <div class="speed-region region-exit"><span>EXIT</span></div>
+            <div class="speed-car-3d" id="speedCar3D">
+              <div class="sc-body"><i class="sc-camera"></i><i class="sc-wheel sc-w1"></i><i class="sc-wheel sc-w2"></i><i class="sc-wheel sc-w3"></i><i class="sc-wheel sc-w4"></i></div>
+            </div>
+            <div class="speed-lookahead"></div>
+          </div>
+          <div class="speed-course-note"><span>CURVATURE-AWARE STRATEGY</span><span>CONCEPTUAL 3D TRACK</span></div>
+        </div>
+
+        <div class="speed-console">
+          <span class="detail-label">SELECT A TRAJECTORY CONDITION</span>
+          <div class="speed-selectors" role="group" aria-label="Trajectory condition">
+            <button class="speed-choice active" data-speed-scene="straight"><span>01</span><b>STRAIGHT</b><small>HIGH TARGET</small></button>
+            <button class="speed-choice" data-speed-scene="gentle"><span>02</span><b>GENTLE CURVE</b><small>MODERATE TARGET</small></button>
+            <button class="speed-choice" data-speed-scene="sharp"><span>03</span><b>SHARP TURN</b><small>REDUCED TARGET</small></button>
+            <button class="speed-choice" data-speed-scene="exit"><span>04</span><b>EXIT</b><small>RECOVER GRADUALLY</small></button>
+          </div>
+          <div class="speed-output">
+            <span>TARGET SPEED STRATEGY</span>
+            <strong id="speedStrategyValue">HIGH</strong>
+            <p id="speedStrategyText">On a straight section, the controller may allow a higher target speed if the path is stable and the validated limits permit it.</p>
+          </div>
+          <div class="speed-sequence">
+            <span>LOOK AHEAD</span><i>→</i><span>ESTIMATE CURVATURE</span><i>→</i><span>ADJUST TARGET</span><i>→</i><span>STEER</span><i>→</i><span>RECOVER</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="preliminary-speed-note reveal">
+        <div><span class="detail-label">PRELIMINARY MOTOR-CALCULATION ESTIMATE</span><strong>~4 m/s</strong></div>
+        <div><span class="status-tag status-testing">VALIDATION PENDING</span><p>This is a preliminary estimate only. It is not a measured speed and is not claimed under the required 5 kg payload.</p></div>
+      </div>
+    </section>
+
+    <section class="section hardware-section" id="hardware">
+      <div class="section-heading reveal">
+        <div class="section-index">05 / HARDWARE & ELECTRONICS</div>
+        <h2>Every component<br><em>has a constraint.</em></h2>
+        <p class="heading-note">Known architecture is shown separately from selections that are still under evaluation. Tap a component card to inspect its role and next validation step.</p>
+      </div>
+
+      <div class="hardware-workbench reveal">
+        <div class="hardware-3d-bay">
+          <div class="hardware-bay-grid"></div>
+          <div class="hardware-bay-platform"></div>
+          <div class="hardware-chip chip-mcu"><span>ESP32-S3</span><i></i></div>
+          <div class="hardware-chip chip-driver"><span>MOTOR<br>DRIVER</span><i></i></div>
+          <div class="hardware-chip chip-sensor"><span>IR ARRAY</span><i></i></div>
+          <div class="hardware-chip chip-power"><span>POWER</span><i></i></div>
+          <div class="hardware-bay-line bay-line-one"></div><div class="hardware-bay-line bay-line-two"></div>
+          <div class="hardware-bay-caption">ELECTRONICS BAY / CONCEPTUAL LAYOUT</div>
+        </div>
+
+        <div class="hardware-inspector">
+          <div class="hardware-inspector-head"><span>COMPONENT INSPECTOR</span><span id="hardwareCount">01 / 09</span></div>
+          <div class="hardware-list" id="hardwareList">
+            <button class="hardware-row active" data-hardware="0"><span>01</span><b>ESP32-S3</b><small>PRIMARY CONTROLLER</small></button>
+            <button class="hardware-row" data-hardware="1"><span>02</span><b>Mobile camera</b><small>VISION CONCEPT</small></button>
+            <button class="hardware-row" data-hardware="2"><span>03</span><b>DC gear motors</b><small>PROPULSION</small></button>
+            <button class="hardware-row" data-hardware="3"><span>04</span><b>Motor driver</b><small>MODEL TBD</small></button>
+            <button class="hardware-row" data-hardware="4"><span>05</span><b>Steering servo</b><small>ACKERMANN ACTUATION</small></button>
+            <button class="hardware-row" data-hardware="5"><span>06</span><b>Wheel encoders</b><small>UNDER INTEGRATION</small></button>
+            <button class="hardware-row" data-hardware="6"><span>07</span><b>IR line sensors</b><small>FALLBACK / REPORTED WORKING</small></button>
+            <button class="hardware-row" data-hardware="7"><span>08</span><b>Battery & power</b><small>FINAL DESIGN TBD</small></button>
+            <button class="hardware-row" data-hardware="8"><span>09</span><b>Chassis / payload platform</b><small>UP TO 5 KG TARGET</small></button>
+          </div>
+          <div class="hardware-description">
+            <span class="detail-label" id="hardwareRole">ROLE / EMBEDDED CONTROL</span>
+            <h3 id="hardwareTitle">ESP32-S3</h3>
+            <p id="hardwareDescription">Primary embedded controller for the current architecture. Final pin mapping and processing responsibilities must be checked against the actual integration plan.</p>
+            <div><span>NEXT CHECK</span><strong id="hardwareNext">Confirm pin map, supply rails and signal levels.</strong></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="engineering-checks reveal">
+        <article><span>CHECK 01</span><h3>LOGIC-LEVEL SAFETY</h3><p>ESP32-S3 GPIO is 3.3 V logic. Verify sensor output levels and use appropriate level-shifting or interface circuitry before connecting any 5 V signal.</p></article>
+        <article><span>CHECK 02</span><h3>MOTOR CURRENT</h3><p>Driver selection must account for motor voltage, expected load, continuous current and startup/stall current—not just a nominal RPM label.</p></article>
+        <article><span>CHECK 03</span><h3>POWER STABILITY</h3><p>Servo and motor transients can disturb controller power. Validate power distribution, grounding and regulator capacity under real load.</p></article>
+      </div>
+    </section>
+
+    <section class="section stability-section" id="stability">
+      <div class="section-heading reveal">
+        <div class="section-index">06 / PAYLOAD & MECHANICAL STABILITY</div>
+        <h2>Five kilograms changes<br><em>the whole system.</em></h2>
+      </div>
+      <div class="stability-grid">
+        <div class="stability-3d-scene reveal">
+          <div class="stability-ground"></div>
+          <div class="stability-chassis">
+            <div class="stability-top"></div><div class="stability-load" id="stabilityLoad"><span>5 KG</span><small>PAYLOAD</small></div>
+            <div class="stability-camera"></div><div class="stability-cog" id="stabilityCog"><i></i><span>C.G.</span></div>
+            <div class="stability-wheel sw1"></div><div class="stability-wheel sw2"></div>
+          </div>
+          <div class="stability-callout cg-callout">CENTRE OF GRAVITY</div>
+          <div class="stability-callout cam-callout">CAMERA MOUNT</div>
+          <div class="stability-toggle">
+            <button class="load-mode active" data-load-mode="empty">NO PAYLOAD</button>
+            <button class="load-mode" data-load-mode="loaded">5 KG CONCEPT</button>
+          </div>
+          <span class="stability-caption">CSS 3D CONCEPT / NOT A STRUCTURAL SIMULATION</span>
+        </div>
+        <div class="stability-copy reveal">
+          <p class="big-copy">Payload capacity is a design requirement, not proof of stable high-speed operation.</p>
+          <div class="stability-factors">
+            <div><span>01</span><div><b>INERTIA</b><p>More mass changes acceleration and braking response.</p></div></div>
+            <div><span>02</span><div><b>TRACTION</b><p>Load distribution affects available grip and wheel slip.</p></div></div>
+            <div><span>03</span><div><b>CORNERING</b><p>High curvature and speed increase demands on steering and stability.</p></div></div>
+            <div><span>04</span><div><b>CENTRE OF GRAVITY</b><p>Payload height and camera mounting can shift the vehicle's balance.</p></div></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section testing-section" id="testing">
+      <div class="section-heading reveal">
+        <div class="section-index">07 / VALIDATION MATRIX</div>
+        <h2>Measure the build.<br><em>Keep the record.</em></h2>
+        <p class="heading-note">Enter real measurements after testing. Values and statuses edited here are stored in this browser only; they do not become verified results automatically.</p>
+      </div>
+
+      <div class="test-toolbar reveal">
+        <div><span class="detail-label">TEST RECORDS</span><strong id="testCompletion">0 / 10 completed</strong></div>
+        <button class="button button-outline" id="resetTests" type="button">RESET LOCAL TEST LOG ↺</button>
+      </div>
+      <div class="test-table-wrap reveal">
+        <table class="test-table">
+          <thead><tr><th>TEST</th><th>CONDITION</th><th>MEASURED VALUE</th><th>STATUS</th><th>NOTES</th></tr></thead>
+          <tbody id="testRows">
+            <tr><td>Unloaded straight line</td><td>No payload</td><td><input aria-label="Unloaded straight-line measured result" data-test-field="0-value" placeholder="—"></td><td><select aria-label="Unloaded straight-line status" data-test-field="0-status"><option>NOT STARTED</option><option>IN PROGRESS</option><option>TESTING</option><option>COMPLETED</option></select></td><td><input aria-label="Unloaded straight-line notes" data-test-field="0-notes" placeholder="Notes"></td></tr>
+            <tr><td>Loaded straight line</td><td>Up to 5 kg target</td><td><input aria-label="Loaded straight-line measured result" data-test-field="1-value" placeholder="—"></td><td><select aria-label="Loaded straight-line status" data-test-field="1-status"><option>NOT STARTED</option><option>IN PROGRESS</option><option>TESTING</option><option>COMPLETED</option></select></td><td><input aria-label="Loaded straight-line notes" data-test-field="1-notes" placeholder="Notes"></td></tr>
+            <tr><td>Gentle curve tracking</td><td>Moderate curvature</td><td><input aria-label="Gentle curve result" data-test-field="2-value" placeholder="—"></td><td><select aria-label="Gentle curve status" data-test-field="2-status"><option>NOT STARTED</option><option>IN PROGRESS</option><option>TESTING</option><option>COMPLETED</option></select></td><td><input aria-label="Gentle curve notes" data-test-field="2-notes" placeholder="Notes"></td></tr>
+            <tr><td>Sharp-turn tracking</td><td>High curvature</td><td><input aria-label="Sharp turn result" data-test-field="3-value" placeholder="—"></td><td><select aria-label="Sharp turn status" data-test-field="3-status"><option>NOT STARTED</option><option>IN PROGRESS</option><option>TESTING</option><option>COMPLETED</option></select></td><td><input aria-label="Sharp turn notes" data-test-field="3-notes" placeholder="Notes"></td></tr>
+            <tr><td>Camera latency</td><td>Wireless video path</td><td><input aria-label="Camera latency result" data-test-field="4-value" placeholder="—"></td><td><select aria-label="Camera latency status" data-test-field="4-status"><option>NOT STARTED</option><option>IN PROGRESS</option><option>TESTING</option><option>COMPLETED</option></select></td><td><input aria-label="Camera latency notes" data-test-field="4-notes" placeholder="Notes"></td></tr>
+            <tr><td>Vision frame rate</td><td>End-to-end pipeline</td><td><input aria-label="Frame rate result" data-test-field="5-value" placeholder="—"></td><td><select aria-label="Frame rate status" data-test-field="5-status"><option>NOT STARTED</option><option>IN PROGRESS</option><option>TESTING</option><option>COMPLETED</option></select></td><td><input aria-label="Frame rate notes" data-test-field="5-notes" placeholder="Notes"></td></tr>
+            <tr><td>Steering response</td><td>Command + wheel angle</td><td><input aria-label="Steering response result" data-test-field="6-value" placeholder="—"></td><td><select aria-label="Steering response status" data-test-field="6-status"><option>NOT STARTED</option><option>IN PROGRESS</option><option>TESTING</option><option>COMPLETED</option></select></td><td><input aria-label="Steering response notes" data-test-field="6-notes" placeholder="Notes"></td></tr>
+            <tr><td>Motor speed / current</td><td>Motor + selected driver</td><td><input aria-label="Motor speed result" data-test-field="7-value" placeholder="—"></td><td><select aria-label="Motor speed status" data-test-field="7-status"><option>NOT STARTED</option><option>IN PROGRESS</option><option>TESTING</option><option>COMPLETED</option></select></td><td><input aria-label="Motor speed notes" data-test-field="7-notes" placeholder="Notes"></td></tr>
+            <tr><td>Encoder feedback</td><td>Wheel rotation</td><td><input aria-label="Encoder result" data-test-field="8-value" placeholder="—"></td><td><select aria-label="Encoder status" data-test-field="8-status"><option>NOT STARTED</option><option>IN PROGRESS</option><option>TESTING</option><option>COMPLETED</option></select></td><td><input aria-label="Encoder notes" data-test-field="8-notes" placeholder="Notes"></td></tr>
+            <tr><td>Payload stability</td><td>Up to 5 kg target</td><td><input aria-label="Payload stability result" data-test-field="9-value" placeholder="—"></td><td><select aria-label="Payload stability status" data-test-field="9-status"><option>NOT STARTED</option><option>IN PROGRESS</option><option>TESTING</option><option>COMPLETED</option></select></td><td><input aria-label="Payload stability notes" data-test-field="9-notes" placeholder="Notes"></td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="test-disclaimer">DEMO FEATURE: results are stored in local browser storage on this device only. Export or write records into project documentation.</p>
+    </section>
+
+    <section class="section team-section" id="team">
+      <div class="section-heading reveal">
+        <div class="section-index">08 / THE PEOPLE BEHIND THE BUILD</div>
+        <h2>First-year minds.<br><em>One machine to figure out.</em></h2>
+        <p class="heading-note">Meet the people behind Team 04. CSS-built 3D portrait placeholders are ready for your real team photos later.</p>
+      </div>
+      <div class="team-intro-bar reveal">
+        <div class="orbit-stamp"><span>TEAM</span><strong>04</strong><small>ROBOCON</small></div>
+        <p>Different workstreams, one shared build. We are first-year students learning through mechanical design, electronics, embedded code, web development, visual storytelling and coordination.</p>
+        <span class="year-stamp">B.TECH<br><b>FIRST YEAR</b></span>
+      </div>
+      <div id="teamGroups" class="team-groups"></div>
+    </section>
+
+    <section class="section progress-section" id="progress">
+      <div class="section-heading reveal">
+        <div class="section-index">09 / BUILD LOG</div>
+        <h2>Real progress.<br><em>Status.</em></h2>
+        <p class="heading-note">the hardware is validated.</p>
+      </div>
+
+      <div class="progress-grid">
+        <article class="progress-card reveal">
+          <div class="progress-top"><span>01 / SENSORS</span><span class="status-tag status-reported">REPORTED WORKING</span></div>
+          <h3>IR sensor bring-up</h3>
+        </article>
+        <article class="progress-card reveal">
+          <div class="progress-top"><span>02 / STEERING</span><span class="status-tag status-reported">MOTION OBSERVED</span></div>
+          <h3>Servo + Ackermann linkage</h3>
+          <p>The servo was reported to be turning. Signal interpretation, steering range and full linkage behavior still need systematic validation.</p>
+          <div class="progress-meta"><span>LAST CHAT UPDATE</span><b>09 OCT 2026</b></div>
+        </article>
+        <article class="progress-card reveal">
+          <div class="progress-top"><span>03 / PROPULSION</span><span class="status-tag status-testing">UNDER TEST</span></div>
+          <h3>Motor + driver compatibility</h3>
+          <p>Driver selection should be checked against supply voltage, continuous current and stall current.</p>
+        </article>
+        <article class="progress-card reveal">
+          <div class="progress-top"><span>04 / FEEDBACK</span><span class="status-tag status-pending">VERIFY NEXT</span></div>
+          <h3>Encoder + chassis data</h3>
+          <p>Exact chassis dimensions and encoder tick value were requested for integration. Treat both as pending confirmation until documented.</p>
+        </article>
+      </div>
+
+      <div class="engineering-caution reveal">
+        <span class="caution-mark">!</span>
+        <div><strong>NO MADE-UP PERFORMANCE NUMBERS</strong><p>Maximum speed, tracking accuracy, camera latency, frame rate, motor performance and 5 kg stability must remain unclaimed until measured in physical tests.</p></div>
+      </div>
+    </section>
+
+    <section class="section team-work-section">
+      <div class="section-heading reveal">
+        <div class="section-index">10 / HOW WE WORK</div>
+        <h2>Built in <em>iterations.</em></h2>
+      </div>
+      <div class="workflow-line reveal">
+        <div><span>01</span><b>UNDERSTAND</b><small>Problem + research</small></div>
+        <div><span>02</span><b>DESIGN</b><small>CAD + schematic</small></div>
+        <div><span>03</span><b>INTEGRATE</b><small>Hardware + code</small></div>
+        <div><span>04</span><b>TEST</b><small>Observe + debug</small></div>
+        <div><span>05</span><b>ITERATE</b><small>Measure + improve</small></div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <div class="footer-logo">R<span>/</span>B</div>
+        <div><strong>ROBOCON / TEAM 04</strong><p>High-Speed Vision-Guided Autonomous Inspection Vehicle</p></div>
+      </div>
+      <div class="footer-actions">
+        <a class="button button-outline" href="https://share.google/aervozBUzyILG09V7" target="_blank" rel="noreferrer">ROBOCON CLUB LINK <span>↗</span></a>
+      </div>
+    </div>
+    <div class="footer-bottom"><span>MECHANICAL / ELECTRONICS / EMBEDDED / VISION / CORPORATE / VFX</span><span>STUDENT ENGINEERING PROJECT · 2026</span></div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
